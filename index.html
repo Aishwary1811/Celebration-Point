@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Celebration Point | Premium Cafe & Bakery – Betul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #fffaf5;
+      color: #2d2418;
+      overflow-x: hidden;
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f0e2d4;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c45c1b;
+      border-radius: 10px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 248, 240, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(196, 92, 27, 0.15);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #c45c1b, #e8893a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo i {
+      background: none;
+      color: #c45c1b;
+      margin-right: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #4a3422;
+      transition: 0.3s;
+      font-size: 1rem;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: #c45c1b;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    .nav-links a.active {
+      color: #c45c1b;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c45c1b, #e07a2e);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(196, 92, 27, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(196, 92, 27, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #c45c1b;
+      color: #c45c1b;
+      padding: 10px 26px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: #c45c1b;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 50px;
+      text-align: center;
+      background: linear-gradient(135deg, #fff5eb 0%, #ffe8d9 100%);
+      border-radius: 60px;
+      margin: 30px 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2d2418, #c45c1b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #5e4b38;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Address Card */
+    .address-card {
+      background: white;
+      border-radius: 40px;
+      padding: 28px 35px;
+      margin: 30px 0 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+      border: 1px solid rgba(196, 92, 27, 0.2);
+      transition: 0.3s;
+    }
+    .address-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    }
+    .address-card h3 {
+      color: #c45c1b;
+      margin-bottom: 12px;
+      font-size: 1.5rem;
+    }
+    .no-delivery {
+      background: #fff0e4;
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c45c1b;
+      margin-top: 12px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 50px 0 30px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #c45c1b;
+      border-radius: 5px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 35px;
+      margin-bottom: 60px;
+    }
+    .card {
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 45px rgba(196, 92, 27, 0.15);
+    }
+    .card-img {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+      padding: 5px 12px;
+      border-radius: 50px;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .card-info {
+      padding: 24px;
+    }
+    .card-info h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #2d2418;
+    }
+    .card-info p {
+      color: #7a6957;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    .price {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #c45c1b;
+      margin-bottom: 15px;
+    }
+    .order-card-btn {
+      width: 100%;
+      background: #fff0e4;
+      border: none;
+      padding: 14px;
+      border-radius: 60px;
+      font-weight: 700;
+      color: #c45c1b;
+      transition: 0.3s;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .order-card-btn:hover {
+      background: #c45c1b;
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      background: #1f1810;
+      color: #e6d5c4;
+      padding: 50px 0 30px;
+      margin-top: 60px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Page Transitions */
+    .page {
+      display: none;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    .active-page {
+      display: block;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: white;
+      border-radius: 40px;
+      padding: 40px;
+      margin: 30px 0;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 60px;
+      border: 1.5px solid #f0e2d4;
+      font-family: inherit;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #c45c1b;
+    }
+    textarea {
+      border-radius: 25px;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .navbar { flex-direction: column; }
+      .nav-links { gap: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo"><i class="fas fa-crown"></i> Celebration Point</div>
+      <ul class="nav-links">
+        <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+        <li><a href="#" data-page="cakes" class="nav-link">Cakes</a></li>
+        <li><a href="#" data-page="cafe" class="nav-link">Cafe Menu</a></li>
+        <li><a href="#" data-page="about" class="nav-link">About</a></li>
+        <li><a href="#" data-page="contact" class="nav-link">Visit Us</a></li>
+      </ul>
+      <button class="btn-primary" data-page="cafe"><i class="fas fa-mug-hot"></i> Order at Cafe</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <!-- HOME PAGE -->
+    <div id="home-page" class="page active-page">
+      <div class="hero" data-aos="fade-up">
+        <h1>Cakes • Pizza • Burgers • Pasta</h1>
+        <p>Betul's most loved cafe & bakery — fresh, flavorful, and always made with love. Dine-in or takeaway, we serve happiness daily.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" data-page="cafe"><i class="fas fa-utensils"></i> Explore Cafe Menu</button>
+          <button class="btn-outline" data-page="cakes"><i class="fas fa-birthday-cake"></i> View Cakes</button>
+        </div>
+      </div>
+
+      <div class="address-card" data-aos="fade-right">
+        <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
+        <p><strong>Celebration Point, Link Road, Sadar, Betul, Madhya Pradesh 460001</strong></p>
+        <p><i class="far fa-clock"></i> Open Daily: 10:00 AM – 10:00 PM</p>
+        <div class="no-delivery"><i class="fas fa-store"></i> No home delivery — Dine-in & Takeaway only</div>
+      </div>
+
+      <div data-aos="fade-right"><div class="section-title">🍰 Signature Cakes</div></div>
+      <div class="grid" id="home-cakes-grid" data-aos="fade-up"></div>
+
+      <div data-aos="fade-right"><div class="section-title">🍕 Chef's Specials</div></div>
+      <div class="grid" id="home-food-grid" data-aos="fade-up"></div>
+    </div>
+
+    <!-- CAKES PAGE -->
+    <div id="cakes-page" class="page">
+      <div class="hero" style="padding: 50px 0;" data-aos="fade-down">
+        <h2>🎂 Freshly Baked Cakes</h2>
+        <p>Indian flavours • Eggless options • Affordable prices</p>
+      </div>
+      <div class="grid" id="full-cakes-grid" data-aos="zoom-in"></div>
+    </div>
+
+    <!-- CAFE MENU PAGE -->
+    <div id="cafe-page" class="page">
+      <div class="hero" style="padding: 50px 0;" data-aos="fade-down">
+        <h2>🍽️ Celebration Cafe Menu</h2>
+        <p>Pizzas • Burgers • Pastas • Fries • Noodles</p>
+      </div>
+      <div class="grid" id="full-food-grid" data-aos="fade-up"></div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about-page" class="page">
+      <div class="hero" data-aos="fade-up">
+        <h2>🇮🇳 Our Story</h2>
+        <p>Where every bite celebrates life</p>
+      </div>
+      <div style="background: white; border-radius: 40px; padding: 45px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);" data-aos="fade-up">
+        <p style="font-size: 1.1rem; line-height: 1.8;">Celebration Point started with a simple dream — to bring <strong>authentic, delicious, and affordable</strong> cakes and cafe food to Betul. Located at <strong>Link Road, Sadar</strong>, we’ve become a favourite spot for families, students, and food lovers.</p>
+        <p style="margin-top: 20px; font-size: 1.1rem;">✨ <strong>Why people love us:</strong> Fresh ingredients, warm ambience, reasonable prices, and no compromise on taste. Whether it's a birthday cake or a cheesy pizza, we make every celebration special.</p>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 40px;" data-aos="fade-up">
+        <div style="text-align: center; padding: 25px; background: white; border-radius: 30px;"><i class="fas fa-cake" style="font-size: 2.5rem; color:#c45c1b;"></i><h3>30+ Cake Flavours</h3></div>
+        <div style="text-align: center; padding: 25px; background: white; border-radius: 30px;"><i class="fas fa-hamburger" style="font-size: 2.5rem; color:#c45c1b;"></i><h3>20+ Cafe Items</h3></div>
+        <div style="text-align: center; padding: 25px; background: white; border-radius: 30px;"><i class="fas fa-rupee-sign" style="font-size: 2.5rem; color:#c45c1b;"></i><h3>Starting ₹79</h3></div>
+      </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact-page" class="page">
+      <div class="hero" data-aos="fade-down">
+        <h2>📞 Visit Us Today</h2>
+        <p>Come for the food, stay for the vibe</p>
+      </div>
+      <div class="address-card" data-aos="fade-right">
+        <h3><i class="fas fa-location-dot"></i> Address</h3>
+        <p><strong>Celebration Point, Link Road, Sadar, Betul, MP 460001</strong></p>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="far fa-clock"></i> 10:00 AM – 10:00 PM (Open all days)</p>
+      </div>
+      <div class="contact-form" data-aos="fade-up">
+        <h3 style="margin-bottom: 20px;">📨 Send us a message</h3>
+        <form id="contactForm">
+          <input type="text" placeholder="Your name" required style="margin-bottom: 15px;">
+          <input type="email" placeholder="Phone / Email" required style="margin-bottom: 15px;">
+          <textarea rows="4" placeholder="Tell us about your cake order or cafe enquiry..."></textarea>
+          <button type="submit" class="btn-primary" style="margin-top: 20px; width: 100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3 style="margin-bottom: 15px;">Celebration Point</h3><p>Best cafe & bakery in Betul</p></div>
+      <div><h3 style="margin-bottom: 15px;">📍 Location</h3><p>Link Rd, Sadar, Betul MP</p></div>
+      <div><h3 style="margin-bottom: 15px;">🕒 Hours</h3><p>10 AM – 10 PM</p></div>
+    </div>
+    <div class="footer-bottom">© 2025 Celebration Point — No delivery, only dine-in & takeaway ❤️</div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 700, offset: 50 });
+
+  // Data
+  const cakes = [
+    { name: "Mango Mastani", desc: "Fresh Alphonso mango & cardamom", price: 349, img: "https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Chai Spice", desc: "Assam tea, cinnamon & clove", price: 299, img: "https://images.pexels.com/photos/1120462/pexels-photo-1120462.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Kesar Pista", desc: "Saffron, pistachio & khoya", price: 449, img: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Rose Lassi", desc: "Rose syrup & creamy yogurt", price: 279, img: "https://images.pexels.com/photos/372882/pexels-photo-372882.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Gulab Jamun", desc: "Moist with gulab jamun chunks", price: 399, img: "https://images.pexels.com/photos/1627914/pexels-photo-1627914.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Paan Spice", desc: "Betel leaf & fennel fusion", price: 329, img: "https://images.pexels.com/photos/1627914/pexels-photo-1627914.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" }
+  ];
+  const food = [
+    { name: "Margherita Pizza", desc: "Classic cheese & tomato", price: 189, img: "https://images.pexels.com/photos/803290/pexels-photo-803290.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Veg Loaded Burger", desc: "Crispy patty with cheese", price: 129, img: "https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Cheesy Fries", desc: "Golden fries & melted cheese", price: 99, img: "https://images.pexels.com/photos/1586943/pexels-photo-1586943.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Penne Alfredo", desc: "Creamy white sauce pasta", price: 179, img: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Chilli Garlic Noodles", desc: "Indo-chinese style", price: 149, img: "https://images.pexels.com/photos/1322297/pexels-photo-1322297.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" },
+    { name: "Farmhouse Pizza", desc: "Corn, bell peppers & olives", price: 249, img: "https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" }
+  ];
+
+  function renderCards(containerId, items, type) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = items.map(item => `
+      <div class="card">
+        <div class="card-img" style="background-image: url('${item.img}');"><div class="card-badge">${type === 'cake' ? '🎂 Fresh' : '🍽️ Hot'}</div></div>
+        <div class="card-info">
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
+          <div class="price">₹${item.price}</div>
+          <button class="order-card-btn" data-name="${item.name}" data-type="${type}"><i class="fas ${type === 'cake' ? 'fa-store' : 'fa-utensils'}"></i> ${type === 'cake' ? 'Pickup at Shop' : 'Dine-in / Takeaway'}</button>
+        </div>
+      </div>
+    `).join('');
+    document.querySelectorAll(`#${containerId} .order-card-btn`).forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert(`📍 ${btn.dataset.name} available at Celebration Point, Link Road, Sadar, Betul.\n🚫 No home delivery — visit us!`);
+      });
+    });
+  }
+
+  // Page routing
+  const pages = { home: 'home-page', cakes: 'cakes-page', cafe: 'cafe-page', about: 'about-page', contact: 'contact-page' };
+  function showPage(pageId) {
+    Object.values(pages).forEach(id => document.getElementById(id).classList.remove('active-page'));
+    document.getElementById(pages[pageId]).classList.add('active-page');
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.dataset.page === pageId) link.classList.add('active');
+    });
+    if (pageId === 'home') {
+      renderCards('home-cakes-grid', cakes.slice(0, 3), 'cake');
+      renderCards('home-food-grid', food.slice(0, 3), 'food');
+    }
+    if (pageId === 'cakes') renderCards('full-cakes-grid', cakes, 'cake');
+    if (pageId === 'cafe') renderCards('full-food-grid', food, 'food');
+    AOS.refresh();
+  }
+
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = el.dataset.page;
+      if (pages[page]) showPage(page);
+    });
+  });
+
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('✨ Thank you! We’ll get back to you soon. Visit Celebration Point, Betul!');
+    e.target.reset();
+  });
+
+  renderCards('home-cakes-grid', cakes.slice(0, 3), 'cake');
+  renderCards('home-food-grid', food.slice(0, 3), 'food');
+  renderCards('full-cakes-grid', cakes, 'cake');
+  renderCards('full-food-grid', food, 'food');
+  showPage('home');
+</script>
+</body>
+</html>
